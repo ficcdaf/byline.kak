@@ -1,40 +1,31 @@
-# byline.kak
+# kak-byline
 
 Expand and shrink line-based selections with <kbd>x</kbd> and <kbd>X</kbd>.
 
 TL;DR: <kbd>x</kbd> drags the cursor down, <kbd>X</kbd> drags the cursor up. See
 the "Examples" section below for a more detailed explanation.
 
-Previously named `expand-line.kak`.
+Forked from [byline.kak](https://github.com/evanrelf/byline.kak). This fork
+features a 17x performance increase per invocation.
 
 ## Installation
 
-### Using [plug.kak](https://github.com/andreyorst/plug.kak) (recommended)
+Add the `byline.kak` file to your `autoload/` directory using your preferred
+method (manual download or plugin manager). Then, import the module in `kakrc`:
 
-With plug.kak installed, add to your `kakrc` file:
-
-```kakoune
-plug "evanrelf/byline.kak" config %{
-  require-module "byline"
-}
-```
-
-### Manually
-
-Download plugin:
-
-```bash
-$ curl -L https://raw.githubusercontent.com/evanrelf/byline.kak/main/rc/byline.kak -o ~/.config/kak/plugins/byline.kak --create-dirs
-```
-
-Add to your `kakrc` file:
-
-```kakoune
-source ~/.config/kak/plugins/byline.kak
-require-module "byline"
+```kak
+require-module byline
 ```
 
 ## Usage
+
+The plugin doesn't map anything by default. The following examples assume you
+have mapped `byline-drag-up` to `X` and `byline-drag-down` to `x`:
+
+```kak
+map global normal x ": byline-drag-down<ret>"
+map global normal X ": byline-drag-up<ret>"
+```
 
 Use <kbd>x</kbd> and <kbd>X</kbd> to drag the cursor down and up by lines,
 respectively. This expands or contracts your selection by lines, based on the
@@ -135,7 +126,6 @@ fox jumps over
 
 </tr>
 </table>
-
 
 #### Press <kbd><a-;></kbd> to swap the cursor (`|`) with the anchor (`[` or `]`)
 
